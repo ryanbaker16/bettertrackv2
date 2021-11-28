@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+   <head>
+      <title>BetterTrack</title>
+      <link rel="stylesheet" href="css/main.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <!-- Optional theme -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+      </title>
+   </head>
+   <body >
+     <div id='app' class="checkin_container">
+         <form class="checkin_form">
+             <h3 id="dc_header">Daily Check-In</h3>
+             <div class="checkin_item">
+                 <label>Hey, how are ya feeling?</label>
+                 <div>
+                   <textarea v-model="feels_entry" id="feel_input" placeholder="Write down some of your thoughts and emotions...">
+                   </textarea>
+                 </div>
+             </div>
+             <div class="checkin_item">
+               <label>Rate your mood on a scale of 1-10</label>
+               <div class="slider-container">
+                 <label> {{ checkin_rating }} </label>
+                 <input v-model="checkin_rating" type="range" min="1" max="10" value="5" class="slider" id="myRange">
+               </div>
+             </div>
+             <div class="checkin_item">
+                 <label>Any goals for today?</label>
+                 <textarea  v-model="goals_entry" placeholder="Write down anything you want to achieve today, big or small...">
+                 </textarea>
+             </div>
+             <div class="checkin_item">
+                 <label>Any thing else you want to mention?</label>
+                 <textarea v-model="misc_entry" id="misc_input" name="dc_misc" placeholder="Write down whatever else you want to make not of...">
+                 </textarea>
+             </div>
+             <div class="checkin_item">
+               <button v-on:click="submitCheckin" type="button" class="btn btn-dark btn-lg btn-block" id= "dc_submit">Submit</button>
+             </div>
+         </form>
+
+     </div>
+    <script src="script.js"></script>
+
+   </body>
+</html>

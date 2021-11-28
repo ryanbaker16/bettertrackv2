@@ -1,0 +1,93 @@
+
+body {
+  background: #2554FF !important;
+  min-height: 100vh;
+  display: flex;
+  font-weight: 400;
+}
+
+.checkin_container {
+  position: fixed;
+  left: 35%;
+  top: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 5px;
+  border-radius: 25px;
+}
+
+.checkin_item {
+  align-self: center;
+}
+
+.checkin_form {
+  background: white;
+}
+
+label {
+  font-weight: 500;
+}
+
+.social-icons {
+  text-align: center;
+  font-family: "Open Sans";
+  font-weight: 300;
+  font-size: 1.5em;
+  color: #222222;
+}
+
+textarea {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  outline: none;
+  resize: none;
+  margin: 0;
+  width: 100%;
+  float: none;
+}
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: blue;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+#dc_submit {
+  width: 100%
+}
+#suc_submit {
+  width: 100%;
+  margin-bottom: 50px;
+}
+#dc_footer {
+  width: 100%;
+}
+
+.slider-container {
+  padding-top: 30px;
+}
