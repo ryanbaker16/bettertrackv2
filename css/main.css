@@ -4,6 +4,7 @@ body {
   min-height: 100vh;
   display: flex;
   font-weight: 400;
+  text-align: center;
 }
 
 .checkin_container {
@@ -20,7 +21,10 @@ body {
 .checkin_item {
   align-self: center;
 }
-
+#checkinVal {
+  position: relative;
+  top: 0;
+}
 .checkin_form {
   background: white;
 }
@@ -29,23 +33,17 @@ label {
   font-weight: 500;
 }
 
-.social-icons {
-  text-align: center;
-  font-family: "Open Sans";
-  font-weight: 300;
-  font-size: 1.5em;
-  color: #222222;
-}
-
 textarea {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   outline: none;
   resize: none;
-  margin: 0;
+  margin: 10;
   width: 100%;
   float: none;
+
+
 }
 .slider {
   -webkit-appearance: none;
@@ -89,5 +87,5 @@ textarea {
 }
 
 .slider-container {
-  padding-top: 30px;
+  padding-top: 10px;
 }

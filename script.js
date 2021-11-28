@@ -8,11 +8,17 @@ var dailycheckinView = new Vue({
   },
   methods: {
     submitCheckin: function() {
-      console.log("PENIS")
-      console.log(this.checkin_rating);
-      console.log(this.feels_entry);
-      console.log(this.goals_entry);
-      console.log(this.misc_entry);
+      date = new Date();
+      dateString = date.toDateString()
+      dateString = dateString.slice(4)
+      checkinLog = {
+        'checkin_rating': this.checkin_rating,
+        'feels': this.feels_entry,
+        'goals': this.goals_entry,
+        'misc': this.misc_entry,
+        'checkin_date': dateString
+      }
+      console.log(checkinLog);
     },
   }
 })

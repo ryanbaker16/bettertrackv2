@@ -13,6 +13,11 @@
       </title>
    </head>
    <body >
+     <div class="container">
+       <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <a class="navbar-brand" href="#">BetterTrack</a>
+       </nav>
+     </div>
      <div id='app' class="checkin_container">
          <form class="checkin_form">
              <h3 id="dc_header">Daily Check-In</h3>
@@ -26,7 +31,7 @@
              <div class="checkin_item">
                <label>Rate your mood on a scale of 1-10</label>
                <div class="slider-container">
-                 <label> {{ checkin_rating }} </label>
+                 <label id="checkinVal"> {{ checkin_rating }} </label>
                  <input v-model="checkin_rating" type="range" min="1" max="10" value="5" class="slider" id="myRange">
                </div>
              </div>
