@@ -7,8 +7,11 @@ var resultView = new Vue({
       userStreak: 0,
       username: "",
       password: "",
+      checkin_rating: 5,
+      feels_entry: '',
+      goals_entry: '',
+      misc_entry: '',
 
-  
     },
     methods: {
         updateCurrentUserInfo(username){
@@ -35,7 +38,7 @@ var resultView = new Vue({
                 document.getElementById("login").style.visibility = "visible";
             }
 
-            
+
 
         },
 
@@ -56,6 +59,20 @@ var resultView = new Vue({
         getUserStreak(){
             this.userStreak =  this.currentUser['checkin_streak'];
         },
+        
+        submitCheckin: function() {
+          date = new Date();
+          dateString = date.toDateString()
+          dateString = dateString.slice(4)
+          checkinLog = {
+            'checkin_rating': this.checkin_rating,
+            'feels': this.feels_entry,
+            'goals': this.goals_entry,
+            'misc': this.misc_entry,
+            'checkin_date': dateString
+          }
+          console.log(checkinLog);
+        },
 
 
 
@@ -63,5 +80,5 @@ var resultView = new Vue({
 
 
     }
-  
+
   })
