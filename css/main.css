@@ -14,8 +14,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 5px;
-  border-radius: 25px;
+  border-radius: 35px;
 }
 
 .checkin_item {
