@@ -13,10 +13,22 @@ var resultView = new Vue({
       goals_entry: '',
       misc_entry: '',
     num_checkins: [3,3,3,3,3,3,3,3,3,3,3,3],
-    totalStars: [0,0,0,0,0,0,0,0,0,0,0,0],
-    avgStars: [0,0,0,0,0,0,0,0,0,0,0,0],
-    indexArray: [0,1,2,3,4,5,6,7,8,9,10,11],
-    months: ["December 2021", "November 2021", "October 2021", "September 2021", "August 2021","July 2021", "June 2021", "May 2021", "April 2021", "March 2021", "February 2021", "January 2021"]
+    totalStars: [0,0,0,0,0,0,0,0,0,0,0,0],
+    avgStars: [0,0,0,0,0,0,0,0,0,0,0,0],
+    indexArray: [0,1,2,3,4,5,6,7,8,9,10,11],
+    checks1: [],
+    checks2: [],
+    checks3: [],
+    checks4: [],
+    checks5: [],
+    checks6: [],
+    checks7: [],
+    checks8: [],
+    checks9: [],
+    checks10: [],
+    checks11: [],
+    checks12: [],
+    months: ["January 2021", "February 2021", "March 2021", "April 2021", "May 2021", "June 2021", "July 2021", "August 2021", "September 2021", "October 2021", "November 2021", "December 2021"]
 
 
     },
@@ -65,14 +77,14 @@ var resultView = new Vue({
             document.getElementById('prizes').style.visibility = "visible";
             document.getElementById('checkin').style.visibility = "hidden";
             document.getElementById('diary').style.visibility = "hidden";
-            
+
         },
 
         showCheckin(){
             document.getElementById('prizes').style.visibility = "hidden";
             document.getElementById('checkin').style.visibility = "visible";
             document.getElementById('diary').style.visibility = "hidden";
-            
+
         },
 
         showDiary(){
@@ -84,7 +96,7 @@ var resultView = new Vue({
         getUserStreak(){
             this.userStreak =  this.currentUser['checkin_streak'];
         },
-        
+
         submitCheckin: function() {
           date = new Date();
           dateString = date.toDateString()
@@ -98,24 +110,19 @@ var resultView = new Vue({
             'checkin_date': dateString,
             'month': dateMonth
           }
-          this.currentUser['checkins'].append(checkinLog);
-          this.currentUser['num_checkins']++;
-          this.currentUser['checkin_streak']++;
-          this.getUserStreak();
           console.log(checkinLog);
         },
 
         calcAverage: function() {
-                  for (let i = 0; i < this.currentUser['checkins'].length; i++) {
-                        var total = 0;
-                        var date = Date.parse(this.currentUser['checkins'][i].checkin_date)
-                        var month = (date.getMonth() + 1);
-                        console.log(month)
-                        totalStars[month] += this.currentUser['checkins'][i].checkin_rating;
-                    }
-                  for (let i = 0; i < 12; i++) {
-                      avgStars[i] += totalStars[i]/num_checkins[i];
-                  }
+                  for (let i = 0; i < this.currentUser['checkins'].length; i++) {
+                        var total = 0;
+                        var month = this.currentUser['checkins'][i].month;
+                        console.log(month)
+                        totalStars[month] += this.currentUser['checkins'][i].checkin_rating;
+                    }
+                  for (let i = 0; i < 12; i++) {
+                      avgStars[i] += totalStars[i]/num_checkins[i];
+                  }
         }
     }
 
