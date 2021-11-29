@@ -33,7 +33,7 @@
                 </div>
         </div>
 
-        <div class="prizes" id="prizes" style="visibility: hidden">
+        <div class="prizes checkin_container" id="prizes" style="visibility: hidden">
             <h3>Prizes</h3>
             <div class="progress-bg">
                 <div class="progress-bar">
@@ -43,9 +43,18 @@
                     <h3 class="goal">Goal: 25 days</h3>
             </div>
 
+            <ul>
+                <li v-if="userStreak >= 5">Prize 1 - Claimed</li>
+                <li v-else>Prize 1</li>
+                <li v-if="userStreak >= 10">Prize 2 - Claimed</li>
+                <li v-else>Prize 2</li>
+                <li v-if="userStreak >= 25">Prize 3 - Claimed</li>
+                <li v-else>Prize 3</li>
+            </ul>
+
         </div>
 
-        <div class="login" id="login">
+        <div class="login checkin_container" id="login">
             <form>
                 <h3>Sign In</h3>
 

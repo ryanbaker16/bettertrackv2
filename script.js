@@ -98,6 +98,10 @@ var resultView = new Vue({
             'checkin_date': dateString,
             'month': dateMonth
           }
+          this.currentUser['checkins'].append(checkinLog);
+          this.currentUser['num_checkins']++;
+          this.currentUser['checkin_streak']++;
+          this.getUserStreak();
           console.log(checkinLog);
         },
 
