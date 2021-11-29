@@ -3,6 +3,7 @@
    <head>
       <title>BetterTrack</title>
       <link rel="stylesheet" href="css/main.css">
+      <!-- <link rel="stylesheet" href="css/bulma-debug.css"> -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
       <!-- Optional theme -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -17,21 +18,23 @@
     <div id='app'>
 
         <ul id='navbar' style="visibility: hidden">
-            <button v-on:click="showCheckin()">Daily Checkin</li>
-            <button v-on:click="showDiary()">Diary</li>
-            <button v-on:click="showPrizes()">Prizes</li>
+            <button class="navButton" v-on:click="showCheckin()">Daily Checkin</li>
+            <button class="navButton" v-on:click="showDiary()">Diary</li>
+            <button class="navButton" v-on:click="showPrizes()">Prizes</li>
+            <h1 id="navTitle">BetterTrack</h1>
         </ul>
 
         <div id='diary' style="visibility: hidden">
-               <div v-for="i in indexArray">
-                     <div class="monthTitle"> {{months[i]}}</div>
-                     <div class="monthSubtitle"> {{avgStars[i]}}</div>
-                     <div class="monthSubtitle"> {{num_checkins[i]}}</div>
-                     <div v-for="check in checkins" >
-                       <div class="roundedCorner" v-if="check.month == i"> {{check.checkin_date}} <br> {{check.checkin_rating}} <br> {{check.feels}}</div>
-                     </div>
-                </div>
-        </div>
+              <div v-for="i in indexArray">
+                    <div class="monthTitle"> {{months[i]}}</div>
+                    <div class="monthSubtitle"> {{avgStars[i]}}</div>
+                    <div class="monthSubtitle"> {{num_checkins[i]}}</div>
+                    <div v-for="check in checkins">
+                                             <div v-if="check.month == (i+1)">
+                      <div class="roundedCorner"> {{check.checkin_date}} <br> {{check.checkin_rating}} <br> {{check.feels}}</div>
+                    </div></div>
+               </div>
+       </div>
 
         <div class="prizes checkin_container" id="prizes" style="visibility: hidden">
             <h3>Prizes</h3>
@@ -54,7 +57,8 @@
 
         </div>
 
-        <div class="login checkin_container" id="login">
+        <div class="checkin_container" id="login">
+            <h1 id="signTitle">BetterTrack</h1>
             <form>
                 <h3>Sign In</h3>
 
