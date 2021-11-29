@@ -3,6 +3,7 @@ var resultView = new Vue({
     data: {
       users: users["users"],
       currentUser: {},
+      checkins: [],
       isLoggedIn: false,
       userStreak: 0,
       username: "",
@@ -11,17 +12,18 @@ var resultView = new Vue({
       feels_entry: '',
       goals_entry: '',
       misc_entry: '',
-      total_stars: [0,0,0,0,0,0,0,0,0,0,0,0],
-      num_checkins: [3,3,3,3,3,3,3,3,3,3,3,3],
-      months: ["December 2021", "November 2021", "October 2021", "September 2021", "August 2021","July 2021", "June 2021", "May 2021", "April 2021", "March 2021", "February 2021", "January 2021"],
-      indexArray: [0,1,2,3,4,5,6,7,8,9,10,11],
-      avgStars: [0,0,0,0,0,0,0,0,0,0,0,0]
+    num_checkins: [3,3,3,3,3,3,3,3,3,3,3,3],
+    totalStars: [0,0,0,0,0,0,0,0,0,0,0,0],
+    avgStars: [0,0,0,0,0,0,0,0,0,0,0,0],
+    indexArray: [0,1,2,3,4,5,6,7,8,9,10,11],
+    months: ["December 2021", "November 2021", "October 2021", "September 2021", "August 2021","July 2021", "June 2021", "May 2021", "April 2021", "March 2021", "February 2021", "January 2021"]
 
 
     },
     methods: {
         updateCurrentUserInfo(username){
             this.currentUser = this.users[username];
+            this.checkins = this.currentUser['checkins'];
             this.getUserStreak();
         },
         logUserIn(username, password){

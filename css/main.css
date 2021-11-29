@@ -265,10 +265,18 @@ padding: 20px;
 width: 20%;
 }
 
-.monthTitle{
+.monthTitle {
 font-size: 40;
 }
 
 .monthSubtitle {
 font-size: 30;
+}
+
+.login{
+  position: absolute;
+  left: 650px;
+  top: 150px;
+
+  
 }
