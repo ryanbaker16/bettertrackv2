@@ -26,8 +26,12 @@
             <h1 id="navTitle">BetterTrack</h1>
         </ul>
 
-        <div class="checkin_container" id='diary' style="visibility: hidden">
-              <div v-for="i in indexArray">
+        <div class="diary checkin_container" id="diary" style="visibility: hidden">
+            <!-- <h3 id="diaryTitle">Diary</h3> -->
+            <div class="diary_header">
+              <h3 id="diaryTitle">Diary</h3>
+            </div>
+              <div class="diary_container" v-for="i in indexArray">
                     <div class="monthTitle"> {{months[i]}}</div>
                     <div class="monthSubtitle"> {{avgStars[i]}}</div>
                     <div class="monthSubtitle"> {{num_checkins[i]}}</div>

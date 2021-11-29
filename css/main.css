@@ -263,10 +263,14 @@ ul {
 }
 
 .roundedCorner{
-border-radius: 25px;
-border: 2px solid black;
-padding: 20px;
-width: 20%;
+  border-radius: 25px;
+  border: 5px solid blue;
+  padding: 20px;
+  width: 100%;
+  margin: 4px;
+  padding-left: 20px;
+  color: lightblue;
+  font-weight: bold;
 }
 
 .monthTitle {
@@ -412,4 +416,43 @@ font-size: 30;
   font-size: 17px;
   color: blue;
   padding: 10px;
+}
+
+.diary {
+  overflow: scroll;
+}
+
+#diaryTitle {
+  font-size: 65px;
+  color: blue;
+}
+.diary_header {
+  position: fixed;
+  top: 79px;
+  left: 467px;
+  padding: 10px 16px;
+  background: white;
+  color: #f1f1f1;
+  z-index: 999;
+  width: 40%;
+  text-align: center;
+  border-radius: 35px;
+}
+
+.diary_container {
+  position: relative;
+  top: 60%;
+  align-self: center;
+}
+
+.monthTitle {
+  color: blue;
+  font-size: 20px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.monthSubtitle {
+  color: lightblue;
+  font-size: 15px;
+  font-weight: bold;
 }
