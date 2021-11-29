@@ -8,6 +8,9 @@ var resultView = new Vue({
       userStreak: 0,
       username: "",
       password: "",
+      new_user_name: "",
+      new_user_email: "",
+      new_user_password: "",
       checkin_rating: 5,
       feels_entry: '',
       goals_entry: '',
@@ -73,6 +76,7 @@ var resultView = new Vue({
             document.getElementById('diary').style.visibility = "hidden";
             document.getElementById('success').style.visibility = "hidden";
             document.getElementById('signup').style.visibility = "hidden";
+            document.getElementById("navbar").style.visibility = "visible";
         },
         showSignup(){
             document.getElementById('prizes').style.visibility = "hidden";
@@ -162,6 +166,24 @@ var resultView = new Vue({
                 else if (this.userStreak < 25){
                     document.getElementById('prizebar').style.width = (this.userStreak*100/30).toString()+"%";
                 }
+        },
+
+        registerNewUser(){
+            var name = this.new_user_name;
+            console.log(name);
+            if(this.new_user_name in this.users){
+                alert("Username already in use. Please select another.");
+            }
+            else{
+                    this.users[name] = {
+                        "password": this.new_user_password,
+                        "email": this.new_user_email,
+                        "num_checkins" : 0,
+                        "checkin_streak": 0,
+                        "checkins": []
+                    }
+                this.updateCurrentUserInfo(name);
+            }
         }
     }
 

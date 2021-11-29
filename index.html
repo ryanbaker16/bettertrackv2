@@ -45,7 +45,7 @@
         <div class="prizes checkin_container" id="prizes" style="visibility: hidden">
             <h3 id="prizesTitle">Prizes</h3>
             <h4 id="prizesSub">Track your streak of daily checkins here and earn prizes for reaching goals!</h4>
-
+            <p>When you reach a goal, prize will be sent directly to your email!</p>
                 <div v-if="userStreak < 5" class="w3-light-grey w3-xlarge">
                     <div id="prizebar" class="w3-container w3-green" style="width:50%">{{userStreak}} days</div>
                 </div>
@@ -78,21 +78,21 @@
                 <h3>Sign Up</h3>
 
                 <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" class="form-control form-control-lg"/>
+                    <label>Username</label>
+                    <input v-model="new_user_name" type="text" class="form-control form-control-lg"/>
                 </div>
 
                 <div class="form-group">
                     <label>Email address</label>
-                    <input type="email" class="form-control form-control-lg" />
+                    <input v-model="new_user_email" type="email" class="form-control form-control-lg" />
                 </div>
 
                 <div class="form-group">
                     <label>Password</label>
-                    <input type="password" class="form-control form-control-lg" />
+                    <input v-model="new_user_password" type="password" class="form-control form-control-lg" />
                 </div>
 
-                <button type="button" class="signinSubmit" v-on:click="showCheckin">Get Started!<i class="fas fa-arrow-right"></i></button>
+                <button type="button" class="signinSubmit" v-on:click="showCheckin(); registerNewUser();">Get Started!<i class="fas fa-arrow-right"></i></button>
             </form>
             <div id="signTolog">
             <p class="forgot-password text-left">
