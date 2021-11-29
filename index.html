@@ -24,11 +24,11 @@
 
         <div id='diary' style="visibility: hidden">
                <div v-for= "i in indexArray" >
-                     <div class = monthTitle> {{months[i]}}</div>
-                     <div class = monthSubtitle> {{avgStars[i]}}</div>
-                     <div class = monthSubtitle> {{num_checkins[i]}}</div>
-                     <div v-for= "check in currentUser['checkins']" >
-                       <div class = roundedCorner> {{check.date}} <br> {{check.checkin_rating}} <br> {{check.feels}}</div>
+                     <div class ="monthTitle"> {{months[i]}}</div>
+                     <div class ="monthSubtitle"> {{avgStars[i]}}</div>
+                     <div class ="monthSubtitle"> {{num_checkins[i]}}</div>
+                     <div v-for="check in currentUser.checkins" >
+                       <div class="roundedCorner"> {{check.checkin_date}} <br> {{check.checkin_rating}} <br> {{check.feels}}</div>
                      </div>
                 </div>
         </div>
