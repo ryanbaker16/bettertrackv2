@@ -82,7 +82,12 @@ var resultView = new Vue({
 
         calcAverage() {
                   for (let i = 0; i < 12; i++) {
+                    if(this.user_num_checkins[i] != 0) {
                       this.avgStars[i] = this.totalStars[i]/this.user_num_checkins[i];
+                    }
+                    else {
+                      this.avgStars[i] = 0;
+                    }
                   }
                   console.log(this.totalStars);
                   console.log(this.user_num_checkins);
