@@ -44,6 +44,9 @@ var resultView = new Vue({
                 alert("Invalid username: Please try again.");
                 document.getElementById("login").style.visibility = "visible";
             }
+
+
+
         },
 
         createUserAccount(name, username, password){
@@ -60,38 +63,50 @@ var resultView = new Vue({
             document.getElementById('prizes').style.visibility = "visible";
             document.getElementById('checkin').style.visibility = "hidden";
             document.getElementById('diary').style.visibility = "hidden";
-
+            document.getElementById('success').style.visibility = "hidden";
+            document.getElementById('signup').style.visibility = "hidden";
         },
 
         showCheckin(){
             document.getElementById('prizes').style.visibility = "hidden";
             document.getElementById('checkin').style.visibility = "visible";
             document.getElementById('diary').style.visibility = "hidden";
-
+            document.getElementById('success').style.visibility = "hidden";
+            document.getElementById('signup').style.visibility = "hidden";
         },
-
+        showSignup(){
+            document.getElementById('prizes').style.visibility = "hidden";
+            document.getElementById('checkin').style.visibility = "hidden";
+            document.getElementById('diary').style.visibility = "hidden";
+            document.getElementById('success').style.visibility = "hidden";
+            document.getElementById('login').style.visibility = "hidden";
+            document.getElementById('signup').style.visibility = "visible";
+        },
+        showLogin(){
+            document.getElementById('prizes').style.visibility = "hidden";
+            document.getElementById('checkin').style.visibility = "hidden";
+            document.getElementById('diary').style.visibility = "hidden";
+            document.getElementById('success').style.visibility = "hidden";
+            document.getElementById('login').style.visibility = "visible";
+            document.getElementById('signup').style.visibility = "hidden";
+        },
         showDiary(){
             document.getElementById('prizes').style.visibility = "hidden";
             document.getElementById('checkin').style.visibility = "hidden";
             document.getElementById('diary').style.visibility = "visible";
+            document.getElementById('success').style.visibility = "hidden";
+            document.getElementById('signup').style.visibility = "hidden";
+        },
+        showSuccess(){
+            document.getElementById('prizes').style.visibility = "hidden";
+            document.getElementById('checkin').style.visibility = "hidden";
+            document.getElementById('diary').style.visibility = "hidden";
+            document.getElementById('success').style.visibility = "visible";
+            document.getElementById('signup').style.visibility = "hidden";
         },
 
         getUserStreak(){
             this.userStreak =  this.currentUser['checkin_streak'];
-        },
-
-        calcAverage() {
-                  for (let i = 0; i < 12; i++) {
-                    if(this.user_num_checkins[i] != 0) {
-                      this.avgStars[i] = this.totalStars[i]/this.user_num_checkins[i];
-                    }
-                    else {
-                      this.avgStars[i] = 0;
-                    }
-                  }
-                  console.log(this.totalStars);
-                  console.log(this.user_num_checkins);
-                  console.log(this.avgStars);
         },
 
         submitCheckin: function() {
@@ -122,6 +137,31 @@ var resultView = new Vue({
 
           this.getUserStreak();
           this.calcAverage();
+          this.showSuccess();
+        },
+
+        calcAverage() {
+                  for (let i = 0; i < 12; i++) {
+                    if(this.user_num_checkins[i] != 0) {
+                      this.avgStars[i] = this.totalStars[i]/this.user_num_checkins[i];
+                    }
+                  }
+                  console.log(this.totalStars);
+                  console.log(this.user_num_checkins);
+                  console.log(this.avgStars);
+        },
+
+        calculatePrizeWidth(){
+
+                if(this.userStreak < 5){
+                    document.getElementById('prizebar').style.width = (this.userStreak*100/5).toString()+"%";
+                }
+                else if(this.userStreak < 10){
+                    document.getElementById('prizebar').style.width = (this.userStreak*100/10).toString()+"%";
+                }
+                else if (this.userStreak < 25){
+                    document.getElementById('prizebar').style.width = (this.userStreak*100/30).toString()+"%";
+                }
         }
     }
 
