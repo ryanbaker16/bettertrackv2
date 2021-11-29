@@ -11,7 +11,7 @@ body {
   height: 700px;
   position: absolute;
   left: 32%;
-  top: 12%;
+  top: 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,15 +19,12 @@ body {
   background-color: white;
 }
 
-.checkin_item {
-  align-self: center;
-}
 #checkinVal {
   position: relative;
-  top: 0;
-}
-.checkin_form {
-  background: white;
+  top: -10px;
+  left: -7px;
+  font-size: 25px;
+  color: blue;
 }
 
 label {
@@ -41,14 +38,14 @@ textarea {
   outline: none;
   resize: none;
   margin: 10;
-  width: 100%;
+  width: 85%;
   float: none;
 
 
 }
 .slider {
   -webkit-appearance: none;
-  width: 100%;
+  width: 50%;
   height: 15px;
   border-radius: 5px;
   background: #d3d3d3;
@@ -88,7 +85,10 @@ textarea {
 }
 
 .slider-container {
-  padding-top: 10px;
+  position: relative;
+  left: 47px;
+  margin-top: 0px;
+  width: 85%
 }
 
 
@@ -299,10 +299,86 @@ font-size: 30;
 #navTitle {
   position: fixed;
   top: 0%;
-  left: 45%;
+  left: 42.5%;
   text-align: center;
+  margin-top: 5px;
 }
 
 #signTitle {
-  
+  position: relative;
+  top: -10%;
+  font-size: 75px;
+  color: blue;
+}
+
+.signin_form h3 {
+  font-size: 40px;
+  margin-top: 0;
+  padding-bottom: 40px;
+}
+
+.signin_form label {
+  font-size: 25px;
+  padding-bottom: 10px;
+}
+
+.signin_form input {
+  position: relative;
+  left: 16.5%;
+  width: 65%;
+}
+
+.signinSubmit{
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin-top: 39px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  border-radius: 15px;
+}
+
+.signin_form i {
+  padding-left: 5px;
+}
+
+.checkin_form h3 {
+  font-size: 40px;
+  margin-top: 0;
+  padding-bottom: 40px;
+  color: blue;
+}
+
+#dcTitle {
+  position: relative;
+  top: 3%;
+  font-size: 73px;
+  color: blue;
+}
+
+.checkin_form label {
+  font-size: 25px;
+  padding-bottom: 6px;
+}
+
+.dcSubmit{
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin-bottom: 10px;
+  margin-top: 2px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  border-radius: 15px;
+  flex-shrink: 4;
+}
+
+.checkin_form i {
+  padding-left: 7px;
 }
