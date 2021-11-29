@@ -2,19 +2,21 @@
 body {
   background: #2554FF !important;
   min-height: 100vh;
-  display: flex;
   font-weight: 400;
   text-align: center;
 }
 
 .checkin_container {
-  position: fixed;
-  left: 35%;
-  top: 15%;
+  width: 600px;
+  height: 700px;
+  position: absolute;
+  left: 32%;
+  top: 12%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 35px;
+  background-color: white;
 }
 
 .checkin_item {
@@ -254,8 +256,10 @@ color: #2554FF;
 
 ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+   background-color: white;
 }
 
 .roundedCorner{
@@ -273,10 +277,28 @@ font-size: 40;
 font-size: 30;
 }
 
-.login{
-  position: absolute;
-  left: 650px;
-  top: 150px;
+#navbar {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  text-align: left;
+}
 
-  
+.navButton{
+  background-color: white;
+  border: none;
+  color: blue;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#navTitle {
+  position: fixed;
+  top: 0%;
+  left: 45%;
+  text-align: center;
 }
