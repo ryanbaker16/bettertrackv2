@@ -25,11 +25,11 @@
             <h1 id="navTitle">BetterTrack</h1>
         </ul>
 
-        <div id='diary'> <!--style="visibility: hidden"-->
+        <div id='diary' style="visibility: hidden">
               <div v-for="i in indexArray">
                     <div class="monthTitle"> {{months[i]}}</div>
-                    <div class="monthSubtitle"> {{avgStars[i]}}</div>
-                    <div class="monthSubtitle"> {{num_checkins[i]}}</div>
+                    <div class="monthSubtitle"> {{avgStars[11-i]}}</div>
+                    <div class="monthSubtitle"> {{user_num_checkins[11-i]}}</div>
                     <div v-for="check in checkins">
                                              <div v-if="check.month == 12-i">
                       <div class="roundedCorner"> {{check.checkin_date}} <br> {{check.checkin_rating}} <br> {{check.feels}}</div>
@@ -67,7 +67,7 @@
 
     </div>
 
-    <!--div class="checkin_container" id="login">
+    <div class="checkin_container" id="login">
         <h1 id="signTitle">BetterTrack</h1>
         <form>
             <h3>Sign In</h3>
@@ -85,7 +85,7 @@
             <button type="button" class="btn btn-dark btn-lg btn-block" v-on:click="logUserIn(username, password)">Sign In</button>
 
         </form>
-    </div-->
+    </div>
 
     <div id="checkin" class="checkin_container" style="visibility: hidden">
         <form class="checkin_form">
