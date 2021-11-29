@@ -16,6 +16,23 @@
    <body >
     <div id='app'>
 
+        <ul id='navbar' style="visibility: hidden">
+            <button v-on:click="showCheckin()">Daily Checkin</li>
+            <button v-on:click="showDiary()">Diary</li>
+            <button v-on:click="showPrizes()">Prizes</li>
+        </ul>
+
+        <div id='diary' style="visibility: hidden">
+               <div v-for= "i in indexArray" >
+                     <div class = monthTitle> {{months[i]}}</div>
+                     <div class = monthSubtitle> {{avgStars[i]}}</div>
+                     <div class = monthSubtitle> {{num_checkins[i]}}</div>
+                     <div v-for= "check in currentUser['checkins']" >
+                       <div class = roundedCorner> {{check.date}} <br> {{check.checkin_rating}} <br> {{check.feels}}</div>
+                     </div>
+                </div>
+        </div>
+
         <div class="prizes" id="prizes" style="visibility: hidden">
             <h3>Prizes</h3>
             <div class="progress-bg">
@@ -28,7 +45,7 @@
 
         </div>
 
-        <div class="login" id="login" style="margin: auto">
+        <div class="login" id="login">
             <form>
                 <h3>Sign In</h3>
 
@@ -47,7 +64,7 @@
             </form>
         </div>
 
-        <div class="checkin_container" style="visibility: hidden">
+        <div id="checkin" class="checkin_container" style="visibility: hidden">
             <form class="checkin_form">
                 <h3 id="dc_header">Daily Check-In</h3>
                 <div class="checkin_item">

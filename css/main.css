@@ -251,3 +251,24 @@ margin: 0;
 .forgot-password a {
 color: #2554FF;
 }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.roundedCorner{
+border-radius: 25px;
+border: 2px solid black;
+padding: 20px;
+width: 20%;
+}
+
+.monthTitle{
+font-size: 40;
+}
+
+.monthSubtitle {
+font-size: 30;
+}
