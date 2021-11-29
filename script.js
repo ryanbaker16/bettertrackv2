@@ -12,25 +12,11 @@ var resultView = new Vue({
       feels_entry: '',
       goals_entry: '',
       misc_entry: '',
-    num_checkins: [3,3,3,3,3,3,3,3,3,3,3,3],
-    totalStars: [0,0,0,0,0,0,0,0,0,0,0,0],
-    avgStars: [0,0,0,0,0,0,0,0,0,0,0,0],
-    indexArray: [0,1,2,3,4,5,6,7,8,9,10,11],
-    checks1: [],
-    checks2: [],
-    checks3: [],
-    checks4: [],
-    checks5: [],
-    checks6: [],
-    checks7: [],
-    checks8: [],
-    checks9: [],
-    checks10: [],
-    checks11: [],
-    checks12: [],
-    months: ["January 2021", "February 2021", "March 2021", "April 2021", "May 2021", "June 2021", "July 2021", "August 2021", "September 2021", "October 2021", "November 2021", "December 2021"]
-
-
+      user_num_checkins: [0,0,0,0,0,0,0,0,0,0,0,0],
+      totalStars: [0,0,0,0,0,0,0,0,0,0,0,0],
+      avgStars: [0,0,0,0,0,0,0,0,0,0,0,0],
+      indexArray: [0,1,2,3,4,5,6,7,8,9,10,11],
+      months: ["December 2021", "November 2021", "October 2021", "September 2021", "August 2021", "July 2021", "June 2021", "May 2021", "April 2021", "March 2021", "February 2021", "January 2021"]
     },
     methods: {
         updateCurrentUserInfo(username){
@@ -58,9 +44,6 @@ var resultView = new Vue({
                 alert("Invalid username: Please try again.");
                 document.getElementById("login").style.visibility = "visible";
             }
-
-
-
         },
 
         createUserAccount(name, username, password){
@@ -77,57 +60,45 @@ var resultView = new Vue({
             document.getElementById('prizes').style.visibility = "visible";
             document.getElementById('checkin').style.visibility = "hidden";
             document.getElementById('diary').style.visibility = "hidden";
-            document.getElementById('success').style.visibility = "hidden";
-            document.getElementById('signup').style.visibility = "hidden";
+
         },
 
         showCheckin(){
             document.getElementById('prizes').style.visibility = "hidden";
             document.getElementById('checkin').style.visibility = "visible";
             document.getElementById('diary').style.visibility = "hidden";
-            document.getElementById('success').style.visibility = "hidden";
-            document.getElementById('signup').style.visibility = "hidden";
+
         },
-        showSignup(){
-            document.getElementById('prizes').style.visibility = "hidden";
-            document.getElementById('checkin').style.visibility = "hidden";
-            document.getElementById('diary').style.visibility = "hidden";
-            document.getElementById('success').style.visibility = "hidden";
-            document.getElementById('login').style.visibility = "hidden";
-            document.getElementById('signup').style.visibility = "visible";
-        },
-        showLogin(){
-            document.getElementById('prizes').style.visibility = "hidden";
-            document.getElementById('checkin').style.visibility = "hidden";
-            document.getElementById('diary').style.visibility = "hidden";
-            document.getElementById('success').style.visibility = "hidden";
-            document.getElementById('login').style.visibility = "visible";
-            document.getElementById('signup').style.visibility = "hidden";
-        },
+
         showDiary(){
             document.getElementById('prizes').style.visibility = "hidden";
             document.getElementById('checkin').style.visibility = "hidden";
             document.getElementById('diary').style.visibility = "visible";
-            document.getElementById('success').style.visibility = "hidden";
-            document.getElementById('signup').style.visibility = "hidden";
-        },
-        showSuccess(){
-            document.getElementById('prizes').style.visibility = "hidden";
-            document.getElementById('checkin').style.visibility = "hidden";
-            document.getElementById('diary').style.visibility = "hidden";
-            document.getElementById('success').style.visibility = "visible";
-            document.getElementById('signup').style.visibility = "hidden";
         },
 
         getUserStreak(){
             this.userStreak =  this.currentUser['checkin_streak'];
         },
 
+        calcAverage() {
+                  for (let i = 0; i < 12; i++) {
+                    if(this.user_num_checkins[i] != 0) {
+                      this.avgStars[i] = this.totalStars[i]/this.user_num_checkins[i];
+                    }
+                    else {
+                      this.avgStars[i] = 0;
+                    }
+                  }
+                  console.log(this.totalStars);
+                  console.log(this.user_num_checkins);
+                  console.log(this.avgStars);
+        },
+
         submitCheckin: function() {
           date = new Date();
           dateString = date.toDateString()
           dateString = dateString.slice(4)
-          dateMonth = date.getMonth();
+          dateMonth = date.getMonth() + 1;
           checkinLog = {
             'checkin_rating': this.checkin_rating,
             'feels': this.feels_entry,
@@ -136,37 +107,21 @@ var resultView = new Vue({
             'checkin_date': dateString,
             'month': dateMonth
           }
-          this.currentUser['checkins'].push(checkinLog);
-          this.currentUser['num_checkins']++;
+          ourCheckins = this.currentUser['num_checkins']
+          ourCheckins[(dateMonth-1)]++;
+          this.user_num_checkins[(dateMonth-1)]++;
           this.currentUser['checkin_streak']++;
+
+          var month = dateMonth;
+          console.log(month)
+          totalArr = this.totalStars;
+          console.log(totalArr)
+          totalArr[(dateMonth-1)] += this.checkin_rating;
+
+          this.currentUser['checkins'].push(checkinLog);
+
           this.getUserStreak();
-          console.log(checkinLog);
-          this.showSuccess();
-        },
-
-        calcAverage: function() {
-                  for (let i = 0; i < this.currentUser['checkins'].length; i++) {
-                        var total = 0;
-                        var month = this.currentUser['checkins'][i].month;
-                        console.log(month)
-                        totalStars[month] += this.currentUser['checkins'][i].checkin_rating;
-                    }
-                  for (let i = 0; i < 12; i++) {
-                      avgStars[i] += totalStars[i]/num_checkins[i];
-                  }
-        },
-
-        calculatePrizeWidth(){
-
-                if(this.userStreak < 5){
-                    document.getElementById('prizebar').style.width = (this.userStreak*100/5).toString()+"%";
-                }
-                else if(this.userStreak < 10){
-                    document.getElementById('prizebar').style.width = (this.userStreak*100/10).toString()+"%";
-                }
-                else if (this.userStreak < 25){
-                    document.getElementById('prizebar').style.width = (this.userStreak*100/30).toString()+"%";
-                }
+          this.calcAverage();
         }
     }
 
