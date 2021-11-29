@@ -39,8 +39,8 @@
        </div>
 
         <div class="prizes checkin_container" id="prizes" style="visibility: hidden">
-            <h2>Prizes</h2>
-            <h4>Track your streak of daily checkins here and earn prizes for reaching goals!</h4>
+            <h3 id="prizesTitle">Prizes</h3>
+            <h4 id="prizesSub">Track your streak of daily checkins here and earn prizes for reaching goals!</h4>
 
                 <div v-if="userStreak < 5" class="w3-light-grey w3-xlarge">
                     <div id="prizebar" class="w3-container w3-green" style="width:50%">{{userStreak}} days</div>
@@ -115,7 +115,6 @@
                     <textarea v-model="misc_entry" id="misc_input" name="dc_misc" placeholder="Write down whatever else you want to make not of...">
                     </textarea>
                 </div>
-                <!-- <button type="button" class="signinSubmit" v-on:click="logUserIn(username, password)">Lets Go!<i class="fas fa-arrow-right"></i></button> -->
                 <button type="button" class="dcSubmit" v-on:click="submitCheckin">Submit<i class="far fa-thumbs-up"></i></button>
             </form>
 
