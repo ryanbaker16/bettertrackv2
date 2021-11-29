@@ -41,7 +41,7 @@
         <div class="prizes checkin_container" id="prizes" style="visibility: hidden">
             <h2>Prizes</h2>
             <h4>Track your streak of daily checkins here and earn prizes for reaching goals!</h4>
-            
+
                 <div v-if="userStreak < 5" class="w3-light-grey w3-xlarge">
                     <div id="prizebar" class="w3-container w3-green" style="width:50%">{{userStreak}} days</div>
                 </div>
@@ -51,7 +51,7 @@
                 <div v-else-if="userStreak < 30" class="w3-light-grey w3-xlarge" >
                     <div id="prizebar" class="w3-container w3-green" style="width:50%">{{userStreak}} days</div>
                 </div>
-            
+
 
             <h3 v-if="userStreak < 5" class="goal">Current Goal: 5 days</h3>
             <h3 v-else-if="userStreak < 10" class="goal">Current Goal: 10 days</h3>
@@ -88,7 +88,7 @@
             </form>
         </div>
 
-        <div id="checkin" class="checkin_container" style="visibility: hidden">
+        <div id="checkin" class="checkin_container" style="visibility: hidden" >
             <form class="checkin_form">
                 <h3 id="dcTitle">Daily Check-In</h3>
                 <div class="form-group">
