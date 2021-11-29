@@ -110,7 +110,7 @@ var resultView = new Vue({
             'checkin_date': dateString,
             'month': dateMonth
           }
-          this.currentUser['checkins'].append(checkinLog);
+          this.currentUser['checkins'].push(checkinLog);
           this.currentUser['num_checkins']++;
           this.currentUser['checkin_streak']++;
           this.getUserStreak();
@@ -127,6 +127,19 @@ var resultView = new Vue({
                   for (let i = 0; i < 12; i++) {
                       avgStars[i] += totalStars[i]/num_checkins[i];
                   }
+        },
+
+        calculatePrizeWidth(){
+            
+                if(this.userStreak < 5){
+                    document.getElementById('prizebar').style.width = (this.userStreak*100/5).toString()+"%";
+                }
+                else if(this.userStreak < 10){
+                    document.getElementById('prizebar').style.width = (this.userStreak*100/10).toString()+"%";
+                }
+                else if (this.userStreak < 25){
+                    document.getElementById('prizebar').style.width = (this.userStreak*100/30).toString()+"%";
+                }
         }
     }
 
