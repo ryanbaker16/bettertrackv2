@@ -72,6 +72,36 @@
 
         </div>
 
+        <div class="checkin_container" id="signup" style="visibility: hidden">
+            <h1 id="signupTitle">BetterTrack</h1>
+            <form class="signin_form">
+                <h3>Sign Up</h3>
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" class="form-control form-control-lg"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input type="email" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control form-control-lg" />
+                </div>
+
+                <button type="button" class="signinSubmit" v-on:click="showCheckin">Get Started!<i class="fas fa-arrow-right"></i></button>
+            </form>
+            <div id="signTolog">
+            <p class="forgot-password text-left">
+                Already registered?
+                <button class="btn success" v-on:click="showLogin">Sign in!</button>
+            </p>
+          </div>
+        </div>
+
         <div class="checkin_container" id="login">
             <h1 id="signTitle">BetterTrack</h1>
             <form class="signin_form">
@@ -88,8 +118,13 @@
                 </div>
 
                 <button type="button" class="signinSubmit" v-on:click="logUserIn(username, password)">Lets Go!<i class="fas fa-arrow-right"></i></button>
-
             </form>
+            <div id="logToSign">
+            <p class="forgot-password text-left">
+                Need an Account?
+                <button class="btn success" v-on:click="showSignup">Sign up!</button>
+            </p>
+          </div>
         </div>
 
         <div id="checkin" class="checkin_container" style="visibility: hidden" >

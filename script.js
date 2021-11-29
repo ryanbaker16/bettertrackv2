@@ -78,6 +78,7 @@ var resultView = new Vue({
             document.getElementById('checkin').style.visibility = "hidden";
             document.getElementById('diary').style.visibility = "hidden";
             document.getElementById('success').style.visibility = "hidden";
+            document.getElementById('signup').style.visibility = "hidden";
         },
 
         showCheckin(){
@@ -85,19 +86,37 @@ var resultView = new Vue({
             document.getElementById('checkin').style.visibility = "visible";
             document.getElementById('diary').style.visibility = "hidden";
             document.getElementById('success').style.visibility = "hidden";
+            document.getElementById('signup').style.visibility = "hidden";
         },
-
+        showSignup(){
+            document.getElementById('prizes').style.visibility = "hidden";
+            document.getElementById('checkin').style.visibility = "hidden";
+            document.getElementById('diary').style.visibility = "hidden";
+            document.getElementById('success').style.visibility = "hidden";
+            document.getElementById('login').style.visibility = "hidden";
+            document.getElementById('signup').style.visibility = "visible";
+        },
+        showLogin(){
+            document.getElementById('prizes').style.visibility = "hidden";
+            document.getElementById('checkin').style.visibility = "hidden";
+            document.getElementById('diary').style.visibility = "hidden";
+            document.getElementById('success').style.visibility = "hidden";
+            document.getElementById('login').style.visibility = "visible";
+            document.getElementById('signup').style.visibility = "hidden";
+        },
         showDiary(){
             document.getElementById('prizes').style.visibility = "hidden";
             document.getElementById('checkin').style.visibility = "hidden";
             document.getElementById('diary').style.visibility = "visible";
             document.getElementById('success').style.visibility = "hidden";
+            document.getElementById('signup').style.visibility = "hidden";
         },
         showSuccess(){
             document.getElementById('prizes').style.visibility = "hidden";
             document.getElementById('checkin').style.visibility = "hidden";
             document.getElementById('diary').style.visibility = "hidden";
             document.getElementById('success').style.visibility = "visible";
+            document.getElementById('signup').style.visibility = "hidden";
         },
 
         getUserStreak(){

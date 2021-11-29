@@ -315,11 +315,19 @@ font-size: 30;
   color: blue;
 }
 
+#signupTitle {
+  position: relative;
+  top: -5%;
+  font-size: 75px;
+  color: blue;
+}
+
 .signin_form h3 {
   font-size: 40px;
   margin-top: 0;
   padding-bottom: 40px;
 }
+
 
 .signin_form label {
   font-size: 25px;
@@ -488,4 +496,26 @@ font-size: 30;
 
 .succesdc i {
   padding-left: 7px;
+}
+
+#logToSign {
+  padding-top: 30px;
+  padding-left: 10px;
+}
+.btn {
+  position: relative;
+  left: -10px;
+  top: -1.5px;
+  border: none;
+  background-color: inherit;
+  margin-left: 0px;
+  padding-left: 0px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.success {color: blue;}
+
+#signTolog {
+  padding-top: 20px;
+  padding-left: 30px;
 }
