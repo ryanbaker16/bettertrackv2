@@ -263,10 +263,14 @@ ul {
 }
 
 .roundedCorner{
-border-radius: 25px;
-border: 2px solid black;
-padding: 20px;
-width: 20%;
+  border-radius: 25px;
+  border: 5px solid blue;
+  padding: 20px;
+  width: 100%;
+  margin: 4px;
+  padding-left: 20px;
+  color: lightblue;
+  font-weight: bold;
 }
 
 .monthTitle {
@@ -299,7 +303,7 @@ font-size: 30;
 #navTitle {
   position: fixed;
   top: 0%;
-  left: 45%;
+  left: 45.8%;
   text-align: center;
   margin-top: 5px;
 }
@@ -311,11 +315,19 @@ font-size: 30;
   color: blue;
 }
 
+#signupTitle {
+  position: relative;
+  top: -5%;
+  font-size: 75px;
+  color: blue;
+}
+
 .signin_form h3 {
   font-size: 40px;
   margin-top: 0;
   padding-bottom: 40px;
 }
+
 
 .signin_form label {
   font-size: 25px;
@@ -381,4 +393,129 @@ font-size: 30;
 
 .checkin_form i {
   padding-left: 7px;
+}
+
+#prizesTitle {
+  position: relative;
+  top: -15%;
+  font-size: 65px;
+  color: blue;
+  padding-bottom: 0px;
+}
+
+#prizesSub {
+  position: relative;
+  top: -10%;
+  font-size: 35px;
+  margin-top: 0;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  color: blue;
+}
+
+.prizes h3 {
+  font-size: 35px;
+  padding-top: 10px;
+  padding-bottom: 6px;
+  color: blue;
+}
+
+.prizes li {
+  font-size: 17px;
+  color: blue;
+  padding: 10px;
+}
+
+.diary {
+  overflow: scroll;
+}
+
+#diaryTitle {
+  font-size: 65px;
+  color: blue;
+}
+.diary_header {
+  position: fixed;
+  top: 79px;
+  left: 467px;
+  padding: 10px 16px;
+  background: white;
+  color: #f1f1f1;
+  z-index: 999;
+  width: 40%;
+  text-align: center;
+  border-radius: 35px;
+}
+
+.diary_container {
+  position: relative;
+  top: 60%;
+  align-self: center;
+}
+
+.monthTitle {
+  color: blue;
+  font-size: 20px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.monthSubtitle {
+  color: lightblue;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#successTitle {
+  position: relative;
+  top: -25%;
+  font-size: 58px;
+  color: blue;
+}
+
+#successSubitle {
+  position: relative;
+  top: -25%;
+  font-size: 58px;
+  color: blue;
+}
+
+.succesSubmit{
+  position: relative;
+  top: -50%;
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin-bottom: 10px;
+  margin-top: 2px;
+  text-align: center;
+  font-size: 25px;
+  border-radius: 15px;
+  width: 80%;
+}
+
+.succesdc i {
+  padding-left: 7px;
+}
+
+#logToSign {
+  padding-top: 30px;
+  padding-left: 10px;
+}
+.btn {
+  position: relative;
+  left: -10px;
+  top: -1.5px;
+  border: none;
+  background-color: inherit;
+  margin-left: 0px;
+  padding-left: 0px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.success {color: blue;}
+
+#signTolog {
+  padding-top: 20px;
+  padding-left: 30px;
 }
