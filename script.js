@@ -77,20 +77,27 @@ var resultView = new Vue({
             document.getElementById('prizes').style.visibility = "visible";
             document.getElementById('checkin').style.visibility = "hidden";
             document.getElementById('diary').style.visibility = "hidden";
-
+            document.getElementById('success').style.visibility = "hidden";
         },
 
         showCheckin(){
             document.getElementById('prizes').style.visibility = "hidden";
             document.getElementById('checkin').style.visibility = "visible";
             document.getElementById('diary').style.visibility = "hidden";
-
+            document.getElementById('success').style.visibility = "hidden";
         },
 
         showDiary(){
             document.getElementById('prizes').style.visibility = "hidden";
             document.getElementById('checkin').style.visibility = "hidden";
             document.getElementById('diary').style.visibility = "visible";
+            document.getElementById('success').style.visibility = "hidden";
+        },
+        showSuccess(){
+            document.getElementById('prizes').style.visibility = "hidden";
+            document.getElementById('checkin').style.visibility = "hidden";
+            document.getElementById('diary').style.visibility = "hidden";
+            document.getElementById('success').style.visibility = "visible";
         },
 
         getUserStreak(){
@@ -115,6 +122,7 @@ var resultView = new Vue({
           this.currentUser['checkin_streak']++;
           this.getUserStreak();
           console.log(checkinLog);
+          this.showSuccess();
         },
 
         calcAverage: function() {
@@ -130,7 +138,7 @@ var resultView = new Vue({
         },
 
         calculatePrizeWidth(){
-            
+
                 if(this.userStreak < 5){
                     document.getElementById('prizebar').style.width = (this.userStreak*100/5).toString()+"%";
                 }

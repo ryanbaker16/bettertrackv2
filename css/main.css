@@ -456,3 +456,36 @@ font-size: 30;
   font-size: 15px;
   font-weight: bold;
 }
+
+#successTitle {
+  position: relative;
+  top: -25%;
+  font-size: 58px;
+  color: blue;
+}
+
+#successSubitle {
+  position: relative;
+  top: -25%;
+  font-size: 58px;
+  color: blue;
+}
+
+.succesSubmit{
+  position: relative;
+  top: -50%;
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin-bottom: 10px;
+  margin-top: 2px;
+  text-align: center;
+  font-size: 25px;
+  border-radius: 15px;
+  width: 80%;
+}
+
+.succesdc i {
+  padding-left: 7px;
+}
