@@ -94,6 +94,7 @@ var resultView = new Vue({
             document.getElementById('success').style.visibility = "hidden";
             document.getElementById('login').style.visibility = "visible";
             document.getElementById('signup').style.visibility = "hidden";
+            document.getElementById("navbar").style.visibility = "hidden";
         },
         showDiary(){
             document.getElementById('prizes').style.visibility = "hidden";
