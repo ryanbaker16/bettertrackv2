@@ -15,6 +15,7 @@ var resultView = new Vue({
       feels_entry: '',
       goals_entry: '',
       misc_entry: '',
+      alreadyCheckedIn: false,
       user_num_checkins: [0,0,0,0,0,0,0,0,0,0,0,0],
       totalStars: [0,0,0,0,0,0,0,0,0,0,0,0],
       avgStars: [0,0,0,0,0,0,0,0,0,0,0,0],
@@ -129,7 +130,11 @@ var resultView = new Vue({
           ourCheckins = this.currentUser['num_checkins']
           ourCheckins[(dateMonth-1)]++;
           this.user_num_checkins[(dateMonth-1)]++;
-          this.currentUser['checkin_streak']++;
+          if(!this.alreadyCheckedIn){
+            this.currentUser['checkin_streak']++;
+            this.alreadyCheckedIn = true;
+          }
+          
 
           var month = dateMonth;
           console.log(month)
@@ -184,6 +189,29 @@ var resultView = new Vue({
                     }
                 this.updateCurrentUserInfo(name);
             }
+        },
+
+        logUserOut(){
+            this.showLogin();
+
+            this.currentUser = {}
+            this.checkins = []
+            this.isLoggedIn = false
+            this.userStreak = 0
+            this.username = ""
+            this.password = ""
+            this.new_user_name = ""
+            this.new_user_email = ""
+            this.new_user_password = ""
+            this.checkin_rating = 5
+            this.feels_entry = ''
+            this.goals_entry = ''
+            this.misc_entry = ''
+            this.user_num_checkins = [0,0,0,0,0,0,0,0,0,0,0,0]
+            this.totalStars = [0,0,0,0,0,0,0,0,0,0,0,0]
+            this.avgStars = [0,0,0,0,0,0,0,0,0,0,0,0]
+            this.alreadyCheckedIn = false;
+
         }
     }
 

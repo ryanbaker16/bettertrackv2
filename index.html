@@ -23,6 +23,7 @@
             <button class="navButton" v-on:click="showCheckin()">Daily Checkin</li>
             <button class="navButton" v-on:click="showDiary(); calcAverage()">Diary</li>
             <button class="navButton" v-on:click="showPrizes(); calculatePrizeWidth();">Prizes</li>
+            <button class="navButton" v-on:click="logUserOut();">Log Out</button>
             <h1 id="navTitle">BetterTrack</h1>
         </ul>
 
@@ -45,6 +46,7 @@
         <div class="prizes checkin_container" id="prizes" style="visibility: hidden">
             <h3 id="prizesTitle">Prizes</h3>
             <h4 id="prizesSub">Track your streak of daily checkins here and earn prizes for reaching goals!</h4>
+            <h4 v-if="alreadyCheckedIn" id="prizesCheckin">You've checked in today and earned a day towards your streak!</h4>
             <p>When you reach a goal, prize will be sent directly to your email!</p>
                 <div v-if="userStreak < 5" class="w3-light-grey w3-xlarge">
                     <div id="prizebar" class="w3-container w3-green" style="width:50%">{{userStreak}} days</div>
