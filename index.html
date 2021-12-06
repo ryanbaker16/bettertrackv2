@@ -43,12 +43,12 @@
                </div>
        </div>
 
-       <div class="diaryClicked" id="diary_clicked" style="visibility: hidden">
+       <div class="diaryClicked checkin_container" id="diary_clicked" style="visibility: hidden">
            <!-- <h3 id="diaryTitle">Diary</h3> -->
            <div class="diary_header">
-             <h3 id="diaryTitle">Diary</h3>
+             <h3 id="diaryTitle" v-on:click="showDiary();" >Diary</h3>
            </div>
-             <div class="diary_container">
+             <div class="diary_container2">
                    <div class="monthTitle"> {{months[currIndex]}} </div>
                    <div class="monthSubtitle">{{avgStars[11-currIndex]}} Avg. Mood Rating </div>
                    <div class="monthSubtitle">{{user_num_checkins[11-currIndex]}} Check-ins </div>

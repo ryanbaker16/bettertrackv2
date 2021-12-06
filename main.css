@@ -307,6 +307,7 @@ font-size: 30;
   left: 45.8%;
   text-align: center;
   margin-top: 5px;
+  color: blue;
 }
 
 #signTitle {
@@ -449,11 +450,17 @@ font-size: 30;
 }
 
 .diary_container {
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: column;
-  top: 520px;
+  top: -70%;
   align-self: center;
+}
+
+.diary_container2 {
+  position: fixed;
+  top: -40%;
+  /* align-self: center; */
 }
 
 .monthTitle {
