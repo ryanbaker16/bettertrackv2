@@ -33,7 +33,7 @@
               <h3 id="diaryTitle">Diary</h3>
             </div>
               <div class="diary_container" v-for="i in indexArray">
-                    <div class="monthTitle"> {{months[i]}}</div>
+                    <div class="monthTitle" v-on:click="saveIndex(i);showDiaryClicked()"> {{months[i]}}</div>
                     <div class="monthSubtitle">{{avgStars[11-i]}} Avg. Mood Rating</div>
                     <div class="monthSubtitle">{{user_num_checkins[11-i]}} Check-ins</div>
                     <div v-for="check in checkins">
@@ -42,6 +42,22 @@
                     </div></div>
                </div>
        </div>
+
+       <div class="diaryClicked" id="diary_clicked" style="visibility: hidden">
+           <!-- <h3 id="diaryTitle">Diary</h3> -->
+           <div class="diary_header">
+             <h3 id="diaryTitle">Diary</h3>
+           </div>
+             <div class="diary_container">
+                   <div class="monthTitle"> {{months[currIndex]}} </div>
+                   <div class="monthSubtitle">{{avgStars[11-currIndex]}} Avg. Mood Rating </div>
+                   <div class="monthSubtitle">{{user_num_checkins[11-currIndex]}} Check-ins </div>
+                   <div v-for="check in checkins">
+                                            <div v-if="check.month == 12-currIndex">
+                     <div class="roundedCorner"> {{check.checkin_date}} <br> {{check.checkin_rating}} <br> {{check.feels}}</div>
+                   </div></div>
+              </div>
+      </div>
 
         <div class="prizes checkin_container" id="prizes" style="visibility: hidden">
             <h3 id="prizesTitle">Prizes</h3>

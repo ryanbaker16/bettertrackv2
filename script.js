@@ -20,6 +20,7 @@ var resultView = new Vue({
       totalStars: [0,0,0,0,0,0,0,0,0,0,0,0],
       avgStars: [0,0,0,0,0,0,0,0,0,0,0,0],
       indexArray: [0,1,2,3,4,5,6,7,8,9,10,11],
+      currIndex: 0,
       months: ["December 2021", "November 2021", "October 2021", "September 2021", "August 2021", "July 2021", "June 2021", "May 2021", "April 2021", "March 2021", "February 2021", "January 2021"]
     },
     methods: {
@@ -69,6 +70,7 @@ var resultView = new Vue({
             document.getElementById('diary').style.visibility = "hidden";
             document.getElementById('success').style.visibility = "hidden";
             document.getElementById('signup').style.visibility = "hidden";
+            document.getElementById('diary_clicked').style.visibility = "hidden";
         },
 
         showCheckin(){
@@ -78,6 +80,7 @@ var resultView = new Vue({
             document.getElementById('success').style.visibility = "hidden";
             document.getElementById('signup').style.visibility = "hidden";
             document.getElementById("navbar").style.visibility = "visible";
+            document.getElementById('diary_clicked').style.visibility = "hidden";
         },
         showSignup(){
             document.getElementById('prizes').style.visibility = "hidden";
@@ -86,6 +89,7 @@ var resultView = new Vue({
             document.getElementById('success').style.visibility = "hidden";
             document.getElementById('login').style.visibility = "hidden";
             document.getElementById('signup').style.visibility = "visible";
+            document.getElementById('diary_clicked').style.visibility = "hidden";
         },
         showLogin(){
             document.getElementById('prizes').style.visibility = "hidden";
@@ -95,20 +99,32 @@ var resultView = new Vue({
             document.getElementById('login').style.visibility = "visible";
             document.getElementById('signup').style.visibility = "hidden";
             document.getElementById("navbar").style.visibility = "hidden";
+            document.getElementById('diary_clicked').style.visibility = "hidden";
         },
         showDiary(){
             document.getElementById('prizes').style.visibility = "hidden";
             document.getElementById('checkin').style.visibility = "hidden";
             document.getElementById('diary').style.visibility = "visible";
-            document.getElementById('success').style.visibility = "hidden";
+            document.getElementById('diary_clicked').style.visibility = "hidden";
             document.getElementById('signup').style.visibility = "hidden";
         },
+
+        showDiaryClicked(){
+            document.getElementById('prizes').style.visibility = "hidden";
+            document.getElementById('checkin').style.visibility = "hidden";
+            document.getElementById('diary').style.visibility = "hidden";
+            document.getElementById('success').style.visibility = "hidden";
+            document.getElementById('signup').style.visibility = "hidden";
+            document.getElementById('diary_clicked').style.visibility = "visible";
+        },
+
         showSuccess(){
             document.getElementById('prizes').style.visibility = "hidden";
             document.getElementById('checkin').style.visibility = "hidden";
             document.getElementById('diary').style.visibility = "hidden";
             document.getElementById('success').style.visibility = "visible";
             document.getElementById('signup').style.visibility = "hidden";
+            document.getElementById('diary_clicked').style.visibility = "hidden";
         },
 
         getUserStreak(){
@@ -135,7 +151,6 @@ var resultView = new Vue({
             this.currentUser['checkin_streak']++;
             this.alreadyCheckedIn = true;
           }
-          
 
           var month = dateMonth;
           console.log(month)
@@ -159,6 +174,11 @@ var resultView = new Vue({
                   console.log(this.totalStars);
                   console.log(this.user_num_checkins);
                   console.log(this.avgStars);
+        },
+
+        saveIndex(i) {
+            this.currIndex = i;
+            console.log(this.currIndex);
         },
 
         calculatePrizeWidth(){
