@@ -4,6 +4,7 @@
       <title>BetterTrack</title>
       <link rel="stylesheet" href="css/main.css">
       <!-- <link rel="stylesheet" href="css/bulma-debug.css"> -->
+      <script src="https://kit.fontawesome.com/9bccd493aa.js" crossorigin="anonymous"></script>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
       <!-- Optional theme -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -20,16 +21,21 @@
 
         <ul id='navbar' style="visibility: hidden">
             <button class="navButton" v-on:click="showCheckin()">Daily Checkin</li>
-            <button class="navButton" v-on:click="showDiary()">Diary</li>
+            <button class="navButton" v-on:click="showDiary(); calcAverage()">Diary</li>
             <button class="navButton" v-on:click="showPrizes(); calculatePrizeWidth();">Prizes</li>
+            <button class="navButton" v-on:click="logUserOut();">Log Out</button>
             <h1 id="navTitle">BetterTrack</h1>
         </ul>
 
-        <div id='diary' style="visibility: hidden">
-              <div v-for="i in indexArray">
-                    <div class="monthTitle"> {{months[i]}}</div>
-                    <div class="monthSubtitle"> {{avgStars[11-i]}}</div>
-                    <div class="monthSubtitle"> {{user_num_checkins[11-i]}}</div>
+        <div class="diary checkin_container" id="diary" style="visibility: hidden">
+            <!-- <h3 id="diaryTitle">Diary</h3> -->
+            <div class="diary_header">
+              <h3 id="diaryTitle">Diary</h3>
+            </div>
+              <div class="diary_container" v-for="i in indexArray">
+                    <div class="monthTitle" v-on:click="saveIndex(i);showDiaryClicked()"> {{months[i]}}</div>
+                    <div class="monthSubtitle">{{avgStars[11-i]}} Avg. Mood Rating</div>
+                    <div class="monthSubtitle">{{user_num_checkins[11-i]}} Check-ins</div>
                     <div v-for="check in checkins">
                                              <div v-if="check.month == 12-i">
                       <div class="roundedCorner"> {{check.checkin_date}} <br> {{check.checkin_rating}} <br> {{check.feels}}</div>
@@ -37,92 +43,150 @@
                </div>
        </div>
 
-       <div class="prizes checkin_container" id="prizes" style="visibility: hidden">
-        <h2>Prizes</h2>
-        <h4>Track your streak of daily checkins here and earn prizes for reaching goals!</h4>
-
-            <div v-if="userStreak < 5" class="w3-light-grey w3-xlarge">
-                <div id="prizebar" class="w3-container w3-green" style="width:50%">{{userStreak}} days</div>
-            </div>
-            <div v-else-if="userStreak < 10" class="w3-light-grey w3-xlarge" >
-                <div id="prizebar" class="w3-container w3-green" style="width:50%">{{userStreak}} days</div>
-            </div>
-            <div v-else-if="userStreak < 30" class="w3-light-grey w3-xlarge" >
-                <div id="prizebar" class="w3-container w3-green" style="width:50%">{{userStreak}} days</div>
-            </div>
-
-
-        <h3 v-if="userStreak < 5" class="goal">Current Goal: 5 days</h3>
-        <h3 v-else-if="userStreak < 10" class="goal">Current Goal: 10 days</h3>
-        <h3 v-else-if="userStreak < 30" class="goal">Current Goal: 30 days</h3>
-
-        <ul>
-            <li v-if="userStreak >= 5">Prize 1 - Free ticket to show at the Michigan Theater - 5 days - Claimed</li>
-            <li v-else>Prize 1 - Free ticket to show at the Michigan Theater! - 5 days</li>
-            <li v-if="userStreak >= 10">Prize 2 - Discount pass for SoulCycle class - 10 days - Claimed</li>
-            <li v-else>Prize 2 - Discount pass for SoulCycle class - 10 days</li>
-            <li v-if="userStreak >= 30">Prize 3 - Free month membership at MVMNT gym - 30 days - Claimed</li>
-            <li v-else>Prize 3 - Free month membership at MVMNT gym - 30 days</li>
-        </ul>
-
-    </div>
-
-    <div class="checkin_container" id="login">
-        <h1 id="signTitle">BetterTrack</h1>
-        <form>
-            <h3>Sign In</h3>
-
-            <div class="form-group">
-                <label>Username</label>
-                <input type="username" class="form-control form-control-lg" v-model="username" />
-            </div>
-
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control form-control-lg" v-model="password"/>
-            </div>
-
-            <button type="button" class="btn btn-dark btn-lg btn-block" v-on:click="logUserIn(username, password)">Sign In</button>
-
-        </form>
-    </div>
-
-    <div id="checkin" class="checkin_container" style="visibility: hidden">
-        <form class="checkin_form">
-            <h3 id="dc_header">Daily Check-In</h3>
-            <div class="checkin_item">
-                <label>Hey, how are ya feeling?</label>
-                <div>
-                  <textarea v-model="feels_entry" id="feel_input" placeholder="Write down some of your thoughts and emotions...">
-                  </textarea>
-                </div>
-            </div>
-            <div class="checkin_item">
-              <label>Rate your mood on a scale of 1-10</label>
-              <div class="slider-container">
-                <label id="checkinVal"> {{ checkin_rating }} </label>
-                <input v-model="checkin_rating" type="range" min="1" max="10" value="5" class="slider" id="myRange">
+       <div class="diaryClicked" id="diary_clicked" style="visibility: hidden">
+           <!-- <h3 id="diaryTitle">Diary</h3> -->
+           <div class="diary_header">
+             <h3 id="diaryTitle">Diary</h3>
+           </div>
+             <div class="diary_container">
+                   <div class="monthTitle"> {{months[currIndex]}} </div>
+                   <div class="monthSubtitle">{{avgStars[11-currIndex]}} Avg. Mood Rating </div>
+                   <div class="monthSubtitle">{{user_num_checkins[11-currIndex]}} Check-ins </div>
+                   <div v-for="check in checkins">
+                                            <div v-if="check.month == 12-currIndex">
+                     <div class="roundedCorner"> {{check.checkin_date}} <br> {{check.checkin_rating}} <br> {{check.feels}}</div>
+                   </div></div>
               </div>
-            </div>
-            <div class="checkin_item">
-                <label>Any goals for today?</label>
-                <textarea  v-model="goals_entry" placeholder="Write down anything you want to achieve today, big or small...">
-                </textarea>
-            </div>
-            <div class="checkin_item">
-                <label>Any thing else you want to mention?</label>
-                <textarea v-model="misc_entry" id="misc_input" name="dc_misc" placeholder="Write down whatever else you want to make not of...">
-                </textarea>
-            </div>
-            <div class="checkin_item">
-              <button v-on:click="submitCheckin" type="button" class="btn btn-dark btn-lg btn-block" id= "dc_submit">Submit</button>
-            </div>
-        </form>
+      </div>
 
-    </div>
+        <div class="prizes checkin_container" id="prizes" style="visibility: hidden">
+            <h3 id="prizesTitle">Prizes</h3>
+            <h4 id="prizesSub">Track your streak of daily checkins here and earn prizes for reaching goals!</h4>
+            <h4 v-if="alreadyCheckedIn" id="prizesCheckin">You've checked in today and earned a day towards your streak!</h4>
+            <p>When you reach a goal, prize will be sent directly to your email!</p>
+                <div v-if="userStreak < 5" class="w3-light-grey w3-xlarge">
+                    <div id="prizebar" class="w3-container w3-green" style="width:50%">{{userStreak}} days</div>
+                </div>
+                <div v-else-if="userStreak < 10" class="w3-light-grey w3-xlarge" >
+                    <div id="prizebar" class="w3-container w3-green" style="width:50%">{{userStreak}} days</div>
+                </div>
+                <div v-else-if="userStreak < 30" class="w3-light-grey w3-xlarge" >
+                    <div id="prizebar" class="w3-container w3-green" style="width:50%">{{userStreak}} days</div>
+                </div>
 
-</div>
-<script src="script.js"></script>
 
-</body>
+            <h3 v-if="userStreak < 5" class="goal">Current Goal: 5 days</h3>
+            <h3 v-else-if="userStreak < 10" class="goal">Current Goal: 10 days</h3>
+            <h3 v-else-if="userStreak < 30" class="goal">Current Goal: 30 days</h3>
+
+            <ul>
+                <li v-if="userStreak >= 5">Prize 1 - Free ticket to show at the Michigan Theater - 5 days - Claimed</li>
+                <li v-else>Prize 1 - Free ticket to show at the Michigan Theater! - 5 days</li>
+                <li v-if="userStreak >= 10">Prize 2 - Discount pass for SoulCycle class - 10 days - Claimed</li>
+                <li v-else>Prize 2 - Discount pass for SoulCycle class - 10 days</li>
+                <li v-if="userStreak >= 30">Prize 3 - Free month membership at MVMNT gym - 30 days - Claimed</li>
+                <li v-else>Prize 3 - Free month membership at MVMNT gym - 30 days</li>
+            </ul>
+
+        </div>
+
+        <div class="checkin_container" id="signup" style="visibility: hidden">
+            <h1 id="signupTitle">BetterTrack</h1>
+            <form class="signin_form">
+                <h3>Sign Up</h3>
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input v-model="new_user_name" type="text" class="form-control form-control-lg"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input v-model="new_user_email" type="email" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input v-model="new_user_password" type="password" class="form-control form-control-lg" />
+                </div>
+
+                <button type="button" class="signinSubmit" v-on:click="showCheckin(); registerNewUser();">Get Started!<i class="fas fa-arrow-right"></i></button>
+            </form>
+            <div id="signTolog">
+            <p class="forgot-password text-left">
+                Already registered?
+                <button class="btn success" v-on:click="showLogin">Sign in!</button>
+            </p>
+          </div>
+        </div>
+
+        <div class="checkin_container" id="login">
+            <h1 id="signTitle">BetterTrack</h1>
+            <form class="signin_form">
+                <h3>Log In</h3>
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="username" class="form-control form-control-lg" v-model="username" />
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control form-control-lg" v-model="password"/>
+                </div>
+
+                <button type="button" class="signinSubmit" v-on:click="logUserIn(username, password)">Lets Go!<i class="fas fa-arrow-right"></i></button>
+            </form>
+            <div id="logToSign">
+            <p class="forgot-password text-left">
+                Need an Account?
+                <button class="btn success" v-on:click="showSignup">Sign up!</button>
+            </p>
+          </div>
+        </div>
+
+        <div id="checkin" class="checkin_container" style="visibility: hidden" >
+            <form class="checkin_form">
+                <h3 id="dcTitle">Daily Check-In</h3>
+                <div class="form-group">
+                    <label>Hey, how are ya feeling?</label>
+                    <div>
+                      <textarea v-model="feels_entry" id="feel_input" placeholder="Write down some of your thoughts and emotions...">
+                      </textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label>Rate your mood on a scale of 1-10</label>
+                  <div class="slider-container">
+                    <label id="checkinVal"> {{ checkin_rating }} </label>
+                    <input v-model="checkin_rating" type="range" min="1" max="10" value="5" class="slider">
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label>Any goals for today?</label>
+                    <textarea  v-model="goals_entry" placeholder="Write down anything you want to achieve today, big or small...">
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label>Any thing else you want to mention?</label>
+                    <textarea v-model="misc_entry" id="misc_input" name="dc_misc" placeholder="Write down whatever else you want to make not of...">
+                    </textarea>
+                </div>
+                <button type="button" class="dcSubmit" v-on:click="submitCheckin">Submit<i class="far fa-thumbs-up"></i></button>
+            </form>
+
+        </div>
+
+        <div class="succesdc checkin_container" id="success" style="visibility: hidden">
+          <h3 id="successTitle">Success!</h3>
+          <h3 id= "successSubitle">You've Submitted a Check-in</h3>
+          <div>
+          <button type="button" class="succesSubmit" v-on:click="showCheckin">Submit another!<i class="far fa-smile-beam fa-lg"></i></button>
+          </div>
+        </div>
+
+   </div>
+   <script src="script.js"></script>
+
+  </body>
 </html>
