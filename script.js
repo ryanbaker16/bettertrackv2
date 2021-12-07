@@ -16,9 +16,9 @@ var resultView = new Vue({
       goals_entry: '',
       misc_entry: '',
       alreadyCheckedIn: false,
-      user_num_checkins: [0,0,0,0,0,0,0,0,0,0,0,0],
-      totalStars: [0,0,0,0,0,0,0,0,0,0,0,0],
-      avgStars: [0,0,0,0,0,0,0,0,0,0,0,0],
+      user_num_checkins: [0,0,0,0,0,0,0,0,0,0,3,0],
+      totalStars: [0,0,0,0,0,0,0,0,0,0,3,0],
+      avgStars: [0,0,0,0,0,0,0,0,0,0,1,0],
       indexArray: [0,1,2,3,4,5,6,7,8,9,10,11],
       currIndex: 0,
       months: ["December 2021", "November 2021", "October 2021", "September 2021", "August 2021", "July 2021", "June 2021", "May 2021", "April 2021", "March 2021", "February 2021", "January 2021"]
@@ -109,6 +109,8 @@ var resultView = new Vue({
             document.getElementById('diary_clicked').style.visibility = "hidden";
             document.getElementById('success').style.visibility = "hidden";
             document.getElementById('signup').style.visibility = "hidden";
+            console.log("HERE")
+            this.calcAverage();
         },
 
         showDiaryClicked(){
