@@ -102,10 +102,12 @@ var resultView = new Vue({
             document.getElementById('diary_clicked').style.visibility = "hidden";
         },
         showDiary(){
+            console.log('showing diary page');
             document.getElementById('prizes').style.visibility = "hidden";
             document.getElementById('checkin').style.visibility = "hidden";
             document.getElementById('diary').style.visibility = "visible";
             document.getElementById('diary_clicked').style.visibility = "hidden";
+            document.getElementById('success').style.visibility = "hidden";
             document.getElementById('signup').style.visibility = "hidden";
         },
 
