@@ -156,7 +156,7 @@ var resultView = new Vue({
           console.log(month)
           totalArr = this.totalStars;
           console.log(totalArr)
-          totalArr[(dateMonth-1)] += this.checkin_rating;
+          totalArr[(dateMonth-1)] += parseInt(this.checkin_rating);
 
           this.currentUser['checkins'].push(checkinLog);
 
